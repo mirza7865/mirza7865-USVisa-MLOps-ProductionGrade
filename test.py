@@ -1,26 +1,36 @@
+from flask import Flask, request, jsonify
+import os
+import sys
+import pandas as pd
+import yaml
+import joblib
+import zipfile
+import json
+from us_visa.logger import logging
+from us_visa.exception import USvisaException
+from us_visa.constants import preprocessor_path, model_path, schema_file_path, CURRENT_YEAR, status_mapping_path
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
+def load_object(file_path):
+    try:
+        logging.info(f"Loading object from {file_path}")
+        if file_path.endswith('.zip'):
+            temp_pkl_path = "temp_model.pkl"
+            with zipfile.ZipFile(file_path, 'r') as zipf:
+                zipf.extract(os.path.basename(temp_pkl_path), path=os.path.dirname(file_path))
+            model_full_path = os.path.join(os.path.dirname(file_path), temp_pkl_path)
+            model = joblib.load(model_full_path)
+            os.remove(model_full_path)
+            return model
+        else:
+            return joblib.load(file_path)
+    except Exception as e:
+        logging.error(f"Error loading object: {USvisaException(e, sys)}")
+        raise USvisaException(e, sys)
 
+preprocessor = load_object(preprocessor_path)
+# print(preprocessor.named_transformers_['one_hot']['one_hot'].categories_)
 
-self.test_df['company_age'] = CURRENT_YEAR-self.test_df['yr_of_estab']
-
-self.test_df.drop(self.drop_cols, axis=1, inplace =True)
-
-self.test_df.drop_duplicates(inplace=True)
-
-
- test_transformed = preprocessor.transform(self.test_df)
- 
-one_hot_encoded_cols = list(preprocessor.named_transformers_['one_hot']['one_hot'].get_feature_names_out(self.one_hot_cols))
-transformed_columns = self.num_features_cols + self.transform_cols + self.ordinal_cols + one_hot_encoded_cols + [col for col in self.train_df.columns if col not in self.num_features_cols + self.ordinal_cols + self.one_hot_cols + self.transform_cols]
-
-train_transformed_df = pd.DataFrame(train_transformed, columns=transformed_columns)
-
-one_hot_encoded_cols = list(preprocessor.named_transformers_['one_hot']['one_hot'].get_feature_names_out(self.one_hot_cols))
-transformed_columns = self.num_features_cols + self.transform_cols + self.ordinal_cols + one_hot_encoded_cols + [col for col in self.train_df.columns if col not in self.num_features_cols + self.ordinal_cols + self.one_hot_cols + self.transform_cols]
-train_transformed_df = pd.DataFrame(train_transformed_df, columns=transformed_columns)
-
-test_transformed.drop('case_status_Certified', axis=1, inplace=True)
-
-test_transformed = test_transformed.rename(columns={'case_status_Denied': 'case_status'})
-
-train_transformed_df.to_csv(self.trans_traindata_path,index =False)
+ordinal_encoder = preprocessor.named_transformers_['ordinal']['ordinal']
+print(ordinal_encoder.categories_)

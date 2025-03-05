@@ -1,0 +1,11 @@
+[ 2025-03-05 05:37:03,945 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 05:37:04,537 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 05:37:04,979 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:37:05,014 ] werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-05 05:37:05,025 ] werkzeug - INFO -  * Debugger PIN: 145-691-381
+[ 2025-03-05 05:37:11,041 ] root - INFO - Preprocessing input data
+[ 2025-03-05 05:37:11,042 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:37:11,050 ] root - INFO - Extracting schema columns
+[ 2025-03-05 05:37:11,052 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [80] error message [unhashable type: 'list']
+[ 2025-03-05 05:37:11,053 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 05:37:11] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2025-03-05 05:37:37,971 ] werkzeug - INFO -  * Detected change in '/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py', reloading

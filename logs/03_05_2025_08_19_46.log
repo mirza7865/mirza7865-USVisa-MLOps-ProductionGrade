@@ -1,0 +1,6 @@
+[ 2025-03-05 08:19:46,134 ] root - INFO - Making predictions
+[ 2025-03-05 08:19:46,134 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 08:19:46,722 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 08:19:47,182 ] root - INFO - Preprocessing input data
+[ 2025-03-05 08:19:47,182 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 08:19:47,184 ] root - INFO - Extracting schema columns

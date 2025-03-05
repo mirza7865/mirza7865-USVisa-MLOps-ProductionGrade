@@ -94,38 +94,37 @@ class ModelEvaluator:
                 self.test_df["company_age"] = CURRENT_YEAR - self.test_df["yr_of_estab"]
             else:
                 logging.warning("yr_of_estab column not found in test data.")
-
+            print(self.test_df.columns)
             # 2. Column Dropping
             self.test_df.drop(self.drop_cols, axis=1, inplace=True)
-
+            print(self.test_df.columns)
             # 3. Duplicate Removal
             self.test_df.drop_duplicates(inplace=True)
 
-            # Debug: Print unique values before transformation
-            logging.info(f"Unique values in test data: {self.test_df.nunique()}")
+            # Separate features and target
+            self.X_test = self.test_df.drop('case_status', axis=1)
+            self.y_test = self.test_df['case_status']
 
-            # 4. Apply preprocessor
-            test_transformed = self.preprocessor.fit_transform(self.test_df)
+            status_mapping = {"Denied": 0, "Certified": 1}
+            self.y_test = self.y_test.map(status_mapping)
 
-            # Debug: Print unique values after transformation
-            test_transformed_df = pd.DataFrame(test_transformed)
-            # logging.info(f"Unique values in transformed test data: {test_transformed_df.nunique()}")
+            # 4. Apply preprocessor (TRANSFORM, NOT FIT_TRANSFORM)
+            test_transformed = self.preprocessor.transform(self.X_test)
 
             # 5. Get transformed column names
             one_hot_encoded_cols = list(self.preprocessor.named_transformers_['one_hot']['one_hot'].get_feature_names_out(self.one_hot_cols))
-            transformed_columns = self.num_features_cols + self.ordinal_cols + one_hot_encoded_cols + [col for col in self.test_df.columns if col not in self.num_features_cols + self.ordinal_cols + self.one_hot_cols + self.transform_cols]
-
+            transformed_columns = self.num_features_cols + self.ordinal_cols + one_hot_encoded_cols + [col for col in self.X_test.columns if col not in self.num_features_cols + self.ordinal_cols + self.one_hot_cols + self.transform_cols]
 
             # 6. Convert NumPy array to DataFrame
-            self.test_df = pd.DataFrame(test_transformed, columns=transformed_columns)
+            self.X_test = pd.DataFrame(test_transformed, columns=transformed_columns)
 
-            # 7. Rename case_status
-            self.test_df.drop('case_status_Certified', axis=1, inplace=True)
-            self.test_df = self.test_df.rename(columns={'case_status_Denied': 'case_status'})
+            # Combine transformed features and encoded target
+            test_transformed_df = pd.concat([self.X_test, self.y_test.reset_index(drop=True)], axis=1)
 
-            self.test_df.to_csv('artifact/model_evaluation/trans_testdata.csv', index=False)
+            test_transformed_df.to_csv('artifact/model_evaluation/trans_testdata.csv', index=False)
 
             logging.info("Test data preprocessing completed successfully.")
+
         except Exception as e:
             logging.error(f"Error preprocessing test data: {USvisaException(e, sys)}")
             raise USvisaException(e, sys)
@@ -133,11 +132,11 @@ class ModelEvaluator:
     def evaluate_model(self):
         try:
             logging.info("Evaluating model...")
-            X_test = self.test_df.drop("case_status", axis=1)
-            y_test = self.test_df["case_status"]
-            y_pred = self.model.predict(X_test)
-            accuracy = accuracy_score(y_test, y_pred)
-            report = classification_report(y_test, y_pred)
+            # X_test = self.test_df.drop("case_status", axis=1)
+            # y_test = self.test_df["case_status"]
+            y_pred = self.model.predict(self.X_test )
+            accuracy = accuracy_score(self.y_test, y_pred)
+            report = classification_report(self.y_test, y_pred)
             logging.info(f"Test Accuracy: {accuracy}")
             logging.info(f"Classification Report:\n{report}")
             return accuracy, report
@@ -153,12 +152,12 @@ class ModelEvaluator:
             self.load_schema()
             self.extract_schema_columns()
             self.preprocess_test_data()
-            return self.evaluate_model()
+            self.evaluate_model()
         except Exception as e:
             logging.error(f"Evaluation pipeline failed: {USvisaException(e, sys)}")
             raise USvisaException(e, sys)
 
 # Example usage (replace with your actual paths)
 
-# evaluator = ModelEvaluator(model_path, testdata_path, preprocessor_path, schema_file_path)
-# evaluator.run_evaluation()
+evaluator = ModelEvaluator(model_path, testdata_path, preprocessor_path, schema_file_path)
+evaluator.run_evaluation()

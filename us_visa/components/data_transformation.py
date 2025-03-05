@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from dataclasses import dataclass, field
 import yaml
+import json
 
 from us_visa.logger import logging
 from us_visa.exception import USvisaException
@@ -72,7 +73,6 @@ class DataTransformation:
         except Exception as e:
             logging.error(f"An Exception has occured : {USvisaException(e, sys)}")
             raise USvisaException(e, sys)
-        
     
     def preprocess_traindata(self):
         try:
@@ -85,16 +85,31 @@ class DataTransformation:
             logging.info("Feature engineering, adding company_age col for tran_df and test_df ...")
             self.train_df['company_age'] = CURRENT_YEAR - self.train_df['yr_of_estab']
 
+            print(self.train_df.columns)
+            
             logging.info("removing unwanted columns ...")
             self.train_df.drop(self.drop_cols, axis=1, inplace=True)
+            
+            print(self.train_df.columns)
 
             logging.info("Removing duplicates from train_df and test_df ...")
             self.train_df.drop_duplicates(inplace=True)
 
+            # Separate features and target
+            X_train = self.train_df.drop('case_status', axis=1)
+            y_train = self.train_df['case_status']
+
+            # Encode target separately
+            status_mapping = {"Denied": 0, "Certified": 1}
+            y_train = y_train.map(status_mapping)
+            
+            with open(status_mapping_path, "w") as f:
+                json.dump(status_mapping, f)
+
             # Numerical Pipeline
             logging.info("Imputing and scaling numerical columns...")
             numerical_pipeline = Pipeline([
-                ('imputer', SimpleImputer(strategy='median')),  # Or 'mean'
+                ('imputer', SimpleImputer(strategy='median')),
                 ('scaler', StandardScaler())
             ])
 
@@ -123,9 +138,9 @@ class DataTransformation:
                 ('ordinal', ordinal_pipeline, self.ordinal_cols),
                 ('one_hot', one_hot_pipeline, self.one_hot_cols)
             ], remainder='passthrough')
-            
-            # Fit and transform train data
-            train_transformed = preprocessor.fit_transform(self.train_df)
+
+            # Fit and transform train features
+            X_train_transformed = preprocessor.fit_transform(X_train)
 
             # Save the preprocessor
             with open(self.preprocessor_path, 'wb') as file:
@@ -133,28 +148,23 @@ class DataTransformation:
             logging.info(f"Preprocessor pickle file saved to {self.preprocessor_path}")
 
             one_hot_encoded_cols = list(preprocessor.named_transformers_['one_hot']['one_hot'].get_feature_names_out(self.one_hot_cols))
-            transformed_columns = self.num_features_cols + self.ordinal_cols + one_hot_encoded_cols + [col for col in self.train_df.columns if col not in self.num_features_cols + self.ordinal_cols + self.one_hot_cols + self.transform_cols]
-
-            # Debug: Print transformed data shape and column names
-            logging.info(f"Shape of train_transformed: {train_transformed.shape}")
-            logging.info(f"Length of transformed_columns: {len(transformed_columns)}")
-            logging.info(f"First few elements of transformed_columns: {transformed_columns[:5]}")
+            transformed_columns = self.num_features_cols + self.ordinal_cols + one_hot_encoded_cols + [col for col in X_train.columns if col not in self.num_features_cols + self.ordinal_cols + self.one_hot_cols + self.transform_cols]
 
             # Convert numpy array to dataframe.
-            train_transformed_df = pd.DataFrame(train_transformed, columns=transformed_columns)
+            X_train_transformed_df = pd.DataFrame(X_train_transformed, columns=transformed_columns)
+
+            # Combine transformed features and encoded target
+            train_transformed_df = pd.concat([X_train_transformed_df, y_train.reset_index(drop=True)], axis=1)
 
             logging.info("Preprocessing train and test pipeline Ended!")
 
-            train_transformed_df.drop('case_status_Certified', axis=1, inplace=True)
-            train_transformed_df = train_transformed_df.rename(columns={'case_status_Denied': 'case_status'})
-
             logging.info("Applying smote to deal with Imbalanced dataset ...")
-            X_train = train_transformed_df.drop('case_status', axis=1)
-            y_train = train_transformed_df['case_status']
+            X_train_resampled = train_transformed_df.drop('case_status', axis=1)
+            y_train_resampled = train_transformed_df['case_status']
 
             smote = SMOTE(random_state=42)
-            X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
-            train_transformed_df = pd.concat([pd.DataFrame(X_train_resampled, columns=X_train.columns), y_train_resampled], axis=1)
+            X_train_resampled, y_train_resampled = smote.fit_resample(X_train_resampled, y_train_resampled)
+            train_transformed_df = pd.concat([pd.DataFrame(X_train_resampled, columns=X_train_resampled.columns), y_train_resampled], axis=1)
             train_transformed = train_transformed_df.copy()
 
             logging.info("Exporting train_transformed_df and test_transformed_df to artifact ...")
@@ -164,7 +174,8 @@ class DataTransformation:
         except Exception as e:
             logging.error(f"An Exception has occured : {USvisaException(e, sys)}")
             raise USvisaException(e, sys)
+    
+     
         
-        
-# data_transformation = DataTransformation(data_path,traindata_path, testdata_path, schema_file_path, trans_traindata_path, trans_testdata_path,preprocessor_path )
-# data_transformation.preprocess_traindata()
+data_transformation = DataTransformation(data_path,traindata_path, testdata_path, schema_file_path, trans_traindata_path, trans_testdata_path,preprocessor_path )
+data_transformation.preprocess_traindata()

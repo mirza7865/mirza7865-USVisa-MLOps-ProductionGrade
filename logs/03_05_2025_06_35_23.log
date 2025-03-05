@@ -1,0 +1,13 @@
+[ 2025-03-05 06:35:23,155 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 06:35:23,590 ] root - INFO - Preprocessor loaded successfully
+[ 2025-03-05 06:35:23,590 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 06:35:24,001 ] root - INFO - Model loaded successfully
+[ 2025-03-05 06:35:24,001 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 06:35:24,003 ] root - INFO - Schema loaded successfully
+[ 2025-03-05 06:35:24,037 ] werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-05 06:35:24,048 ] werkzeug - INFO -  * Debugger PIN: 145-691-381
+[ 2025-03-05 06:36:48,221 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 06:36:48] "[31m[1mGET /test HTTP/1.1[0m" 405 -
+[ 2025-03-05 06:36:59,613 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 06:36:59] "[31m[1mGET /test HTTP/1.1[0m" 405 -
+[ 2025-03-05 06:37:22,010 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 06:37:22] "POST /test HTTP/1.1" 200 -
+[ 2025-03-05 06:37:58,004 ] root - ERROR - Error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+[ 2025-03-05 06:37:58,006 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 06:37:58] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -

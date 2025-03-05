@@ -1,0 +1,5 @@
+[ 2025-03-05 05:25:44,488 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 05:25:44,975 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 05:25:45,427 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:25:45,462 ] werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-05 05:25:45,472 ] werkzeug - INFO -  * Debugger PIN: 145-691-381

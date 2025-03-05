@@ -1,0 +1,47 @@
+[ 2025-03-05 07:18:07,120 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 07:18:07,720 ] root - INFO - Preprocessor loaded successfully
+[ 2025-03-05 07:18:07,720 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 07:18:08,162 ] root - INFO - Model loaded successfully
+[ 2025-03-05 07:18:08,162 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 07:18:08,164 ] root - INFO - Schema loaded successfully
+[ 2025-03-05 07:18:08,203 ] werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[ 2025-03-05 07:18:08,203 ] werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2025-03-05 07:18:21,538 ] root - ERROR - Input data validation error: 11 validation errors for VisaData
+case_id
+  str type expected (type=type_error.str)
+continent
+  str type expected (type=type_error.str)
+education_of_employee
+  str type expected (type=type_error.str)
+has_job_experience
+  str type expected (type=type_error.str)
+requires_job_training
+  str type expected (type=type_error.str)
+no_of_employees
+  value is not a valid integer (type=type_error.integer)
+yr_of_estab
+  value is not a valid integer (type=type_error.integer)
+region_of_employment
+  str type expected (type=type_error.str)
+prevailing_wage
+  value is not a valid float (type=type_error.float)
+unit_of_wage
+  str type expected (type=type_error.str)
+full_time_position
+  str type expected (type=type_error.str)
+[ 2025-03-05 07:18:21,540 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 07:18:21] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+[ 2025-03-05 07:21:35,898 ] root - INFO - Preprocessing input data
+[ 2025-03-05 07:21:35,899 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 07:21:35,905 ] root - INFO - Extracting schema columns
+[ 2025-03-05 07:21:35,923 ] root - INFO - Making predictions
+[ 2025-03-05 07:21:35,923 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 07:21:35,925 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 07:21:36,328 ] root - INFO - Preprocessing input data
+[ 2025-03-05 07:21:36,328 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 07:21:36,330 ] root - INFO - Extracting schema columns
+[ 2025-03-05 07:21:36,330 ] root - WARNING - yr_of_estab column not found in input data.
+[ 2025-03-05 07:21:36,331 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [66] error message ["['case_id', 'yr_of_estab'] not found in axis"]
+[ 2025-03-05 07:21:36,331 ] root - ERROR - Error making predictions: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [82] error message [Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [66] error message ["['case_id', 'yr_of_estab'] not found in axis"]]
+[ 2025-03-05 07:21:36,331 ] root - ERROR - Error: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [82] error message [Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [66] error message ["['case_id', 'yr_of_estab'] not found in axis"]]
+[ 2025-03-05 07:21:36,340 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 07:21:36] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -

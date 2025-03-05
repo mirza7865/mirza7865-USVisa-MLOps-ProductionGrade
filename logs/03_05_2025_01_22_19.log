@@ -1,0 +1,8 @@
+[ 2025-03-05 01:22:19,165 ] root - INFO - Making predictions
+[ 2025-03-05 01:22:19,165 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 01:22:19,756 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 01:22:20,200 ] root - INFO - Preprocessing input data
+[ 2025-03-05 01:22:20,200 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 01:22:20,203 ] root - INFO - Extracting schema columns
+[ 2025-03-05 01:22:20,207 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [84] error message [columns are missing: {'has_job_experience', 'education_of_employee', 'requires_job_training', 'region_of_employment', 'unit_of_wage', 'case_status', 'full_time_position', 'no_of_employees'}]
+[ 2025-03-05 01:22:20,207 ] root - ERROR - Error making predictions: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [103] error message [Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [84] error message [columns are missing: {'has_job_experience', 'education_of_employee', 'requires_job_training', 'region_of_employment', 'unit_of_wage', 'case_status', 'full_time_position', 'no_of_employees'}]]

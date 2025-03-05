@@ -48,7 +48,6 @@ oh_columns:
   - continent
   - unit_of_wage
   - region_of_employment
-  - case_status
 
 transform_columns:
   - prevailing_wage

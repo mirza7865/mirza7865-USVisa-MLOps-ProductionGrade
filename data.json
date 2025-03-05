@@ -1,0 +1,13 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+    "case_id": "E-123",
+    "continent": "Asia",
+    "education_of_employee": "Doctorate",
+    "has_job_experience": "Y",
+    "requires_job_training": "N",
+    "no_of_employees": 100,
+    "yr_of_estab": 2010,
+    "region_of_employment": "South Asia",
+    "prevailing_wage": 50000.0,
+    "unit_of_wage": "Year",
+    "full_time_position": "Y"
+}' http://127.0.0.1:5000/predict

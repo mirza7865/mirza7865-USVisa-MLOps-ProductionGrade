@@ -1,0 +1,15 @@
+[ 2025-03-05 05:16:01,525 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 05:16:01,969 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 05:16:02,398 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:16:02,427 ] werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-05 05:16:02,436 ] werkzeug - INFO -  * Debugger PIN: 145-691-381
+[ 2025-03-05 05:17:06,995 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 05:17:06] "[33mGET / HTTP/1.1[0m" 404 -
+[ 2025-03-05 05:17:24,432 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 05:17:24] "[31m[1mGET /predict HTTP/1.1[0m" 405 -
+[ 2025-03-05 05:17:42,945 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 05:17:42] "[33mGET /predict. HTTP/1.1[0m" 404 -
+[ 2025-03-05 05:18:41,745 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 05:18:41] "[33mGET / HTTP/1.1[0m" 404 -
+[ 2025-03-05 05:20:15,152 ] root - INFO - Preprocessing input data
+[ 2025-03-05 05:20:15,152 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:20:15,158 ] root - INFO - Extracting schema columns
+[ 2025-03-05 05:20:15,167 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [77] error message ["['case_id'] not found in axis"]
+[ 2025-03-05 05:20:15,167 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 05:20:15] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2025-03-05 05:24:21,929 ] werkzeug - INFO -  * Detected change in '/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py', reloading

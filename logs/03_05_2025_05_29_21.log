@@ -1,0 +1,8 @@
+[ 2025-03-05 05:29:21,368 ] root - INFO - Making predictions
+[ 2025-03-05 05:29:21,368 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 05:29:21,957 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 05:29:22,416 ] root - INFO - Preprocessing input data
+[ 2025-03-05 05:29:22,416 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:29:22,419 ] root - INFO - Extracting schema columns
+[ 2025-03-05 05:29:22,427 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [91] error message [Shape of passed values is (1, 22), indices imply (1, 23)]
+[ 2025-03-05 05:29:22,427 ] root - ERROR - Error making predictions: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [103] error message [Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [91] error message [Shape of passed values is (1, 22), indices imply (1, 23)]]

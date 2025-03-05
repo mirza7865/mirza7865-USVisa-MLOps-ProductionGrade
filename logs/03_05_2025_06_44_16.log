@@ -1,0 +1,9 @@
+[ 2025-03-05 06:44:16,492 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 06:44:16,950 ] root - INFO - Preprocessor loaded successfully
+[ 2025-03-05 06:44:16,950 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 06:44:17,353 ] root - INFO - Model loaded successfully
+[ 2025-03-05 06:44:17,354 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 06:44:17,357 ] root - INFO - Schema loaded successfully
+[ 2025-03-05 06:44:17,391 ] werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-05 06:44:17,405 ] werkzeug - INFO -  * Debugger PIN: 145-691-381
+[ 2025-03-05 06:47:46,096 ] werkzeug - INFO -  * Detected change in '/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py', reloading

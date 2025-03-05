@@ -1,0 +1,28 @@
+[ 2025-03-05 04:40:36,834 ] root - INFO - Loading model from artifact/model_training/model.pkl.zip...
+[ 2025-03-05 04:40:37,357 ] root - INFO - Model loaded and unzipped successfully.
+[ 2025-03-05 04:40:37,357 ] root - INFO - Loading preprocessor from artifact/data_transformation/preprocessor.pkl...
+[ 2025-03-05 04:40:37,359 ] root - INFO - Preprocessor loaded successfully.
+[ 2025-03-05 04:40:37,361 ] root - INFO - Loaded preprocessor transformers: {'numerical': Pipeline(steps=[('imputer', SimpleImputer(strategy='median')),
+                ('scaler', StandardScaler())]), 'ordinal': Pipeline(steps=[('imputer', SimpleImputer(strategy='most_frequent')),
+                ('ordinal', OrdinalEncoder())]), 'one_hot': Pipeline(steps=[('imputer', SimpleImputer(strategy='most_frequent')),
+                ('one_hot', OneHotEncoder(handle_unknown='ignore'))])}
+[ 2025-03-05 04:40:37,361 ] root - INFO - Loading raw test data...
+[ 2025-03-05 04:40:37,370 ] root - INFO - Raw test data loaded successfully.
+[ 2025-03-05 04:40:37,370 ] root - INFO - Reading schema file from config folder
+[ 2025-03-05 04:40:37,372 ] root - INFO - schema file loaded succesfully!
+[ 2025-03-05 04:40:37,372 ] root - INFO - Extracting dropping columns from schema file ...
+[ 2025-03-05 04:40:37,372 ] root - INFO - Columns from schema file extracted succesfully!
+[ 2025-03-05 04:40:37,372 ] root - INFO - Preprocessing test data...
+[ 2025-03-05 04:40:37,423 ] root - INFO - Test data preprocessing completed successfully.
+[ 2025-03-05 04:40:37,423 ] root - INFO - Evaluating model...
+[ 2025-03-05 04:40:37,622 ] root - INFO - Test Accuracy: 0.7135007849293563
+[ 2025-03-05 04:40:37,623 ] root - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.57      0.60      0.58      1695
+           1       0.79      0.77      0.78      3401
+
+    accuracy                           0.71      5096
+   macro avg       0.68      0.68      0.68      5096
+weighted avg       0.72      0.71      0.72      5096
+

@@ -1,0 +1,9 @@
+[ 2025-03-05 05:44:31,042 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 05:44:31,628 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 05:44:32,107 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:44:32,141 ] werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[ 2025-03-05 05:44:32,141 ] werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2025-03-05 05:44:32,142 ] werkzeug - INFO -  * Restarting with stat
+[ 2025-03-05 05:53:24,545 ] werkzeug - INFO -  * Restarting with stat
+[ 2025-03-05 05:53:46,843 ] werkzeug - INFO -  * Restarting with stat

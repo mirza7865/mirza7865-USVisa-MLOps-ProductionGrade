@@ -1,0 +1,6 @@
+[ 2025-03-05 05:38:03,224 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 05:38:03,674 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 05:38:04,053 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 05:38:04,085 ] werkzeug - WARNING -  * Debugger is active!
+[ 2025-03-05 05:38:04,094 ] werkzeug - INFO -  * Debugger PIN: 145-691-381
+[ 2025-03-05 05:38:23,626 ] werkzeug - INFO -  * Detected change in '/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py', reloading

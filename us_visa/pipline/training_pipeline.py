@@ -10,7 +10,8 @@ from us_visa.components.data_transformation import DataTransformation
 from us_visa.components.model_trainer import ModelTrainer
 from us_visa.components.model_evaluation import ModelEvaluator
 from us_visa.components.model_pusher import ModelPusher
-
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 data_ingestion = DataIngestion() 

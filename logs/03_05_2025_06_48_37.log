@@ -1,0 +1,26 @@
+[ 2025-03-05 06:48:37,665 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 06:48:38,280 ] root - INFO - Preprocessor loaded successfully
+[ 2025-03-05 06:48:38,280 ] root - INFO - Loading object from artifact/model_training/model.pkl.zip
+[ 2025-03-05 06:48:38,754 ] root - INFO - Model loaded successfully
+[ 2025-03-05 06:48:38,754 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 06:48:38,756 ] root - INFO - Schema loaded successfully
+[ 2025-03-05 06:48:38,800 ] werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[ 2025-03-05 06:48:38,800 ] werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2025-03-05 06:50:03,534 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 06:50:03] "POST /test HTTP/1.1" 200 -
+[ 2025-03-05 06:50:52,524 ] root - INFO - Preprocessing input data
+[ 2025-03-05 06:50:52,525 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 06:50:52,531 ] root - INFO - Extracting schema columns
+[ 2025-03-05 06:50:52,553 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [68] error message [Found unknown categories ['Masters'] in column 3 during transform]
+[ 2025-03-05 06:50:52,554 ] root - ERROR - Error: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [68] error message [Found unknown categories ['Masters'] in column 3 during transform]
+[ 2025-03-05 06:50:52,554 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 06:50:52] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2025-03-05 07:00:23,001 ] root - ERROR - Error: 400 Bad Request: Failed to decode JSON object: Invalid control character at: line 4 column 48 (char 125)
+[ 2025-03-05 07:00:23,003 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 07:00:23] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2025-03-05 07:01:22,898 ] root - ERROR - Error: 400 Bad Request: Failed to decode JSON object: Invalid control character at: line 4 column 46 (char 119)
+[ 2025-03-05 07:01:22,900 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 07:01:22] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[ 2025-03-05 07:01:26,431 ] root - INFO - Preprocessing input data
+[ 2025-03-05 07:01:26,431 ] root - INFO - Loading schema from config/schema.yaml
+[ 2025-03-05 07:01:26,439 ] root - INFO - Extracting schema columns
+[ 2025-03-05 07:01:26,458 ] root - ERROR - Error preprocessing input data: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [68] error message [Found unknown categories ['Masters'] in column 3 during transform]
+[ 2025-03-05 07:01:26,459 ] root - ERROR - Error: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/app.py] line number [68] error message [Found unknown categories ['Masters'] in column 3 during transform]
+[ 2025-03-05 07:01:26,459 ] werkzeug - INFO - 127.0.0.1 - - [05/Mar/2025 07:01:26] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -

@@ -24,6 +24,8 @@ CURRENT_YEAR = date.today().year
 trans_traindata_path= 'artifact/data_transformation/trans_train_data.csv'
 trans_testdata_path= 'artifact/data_transformation/trans_test_data.csv'
 preprocessor_path = 'artifact/data_transformation/preprocessor.pkl'
+status_mapping_path = 'artifact/data_transformation/status_mapping.json'
+
 
 ########## Data Trainer ######
 model_path = 'artifact/model_training/model.pkl.zip'

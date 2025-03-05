@@ -1,0 +1,4 @@
+[ 2025-03-05 01:05:52,805 ] root - INFO - Making predictions
+[ 2025-03-05 01:05:52,805 ] root - INFO - Loading object from artifact/data_transformation/preprocessor.pkl
+[ 2025-03-05 01:05:52,805 ] root - ERROR - Error loading object: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [32] error message [name 'joblib' is not defined]
+[ 2025-03-05 01:05:52,805 ] root - ERROR - Error making predictions: Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [97] error message [Error occurred python script name [/Users/mirza/Desktop/mirza7865-USVisa-MLOps-ProductionGrade/us_visa/pipline/prediction_pipeline.py] line number [32] error message [name 'joblib' is not defined]]
